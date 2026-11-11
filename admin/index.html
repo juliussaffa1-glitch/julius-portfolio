@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Private portfolio message inbox.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <title>Private Inbox | Julius</title>
+</head>
+<body class="admin-page">
+    <header class="admin-header">
+        <a class="logo" href="../index.html">JULIUS</a>
+        <a class="back-link" href="../index.html">Back to portfolio</a>
+    </header>
+
+    <main class="admin-main">
+        <section class="admin-login admin-panel" id="loginPanel" aria-labelledby="loginTitle">
+            <span class="eyebrow">Private area</span>
+            <h1 id="loginTitle">Administrator sign in</h1>
+            <p>Sign in with the administrator account provisioned for this portfolio.</p>
+            <form id="loginForm" class="admin-login-form">
+                <label for="loginEmail">Email</label>
+                <input id="loginEmail" type="email" name="email" autocomplete="username" required>
+                <label for="loginPassword">Password</label>
+                <input id="loginPassword" type="password" name="password" autocomplete="current-password" required>
+                <p class="admin-status" id="loginStatus" role="status" aria-live="polite"></p>
+                <button class="btn" type="submit" id="loginButton">Sign in</button>
+            </form>
+        </section>
+
+        <section class="admin-dashboard" id="dashboardPanel" hidden aria-labelledby="dashboardTitle">
+            <div class="dashboard-heading">
+                <div>
+                    <span class="eyebrow">Private area</span>
+                    <h1 id="dashboardTitle">Message inbox</h1>
+                </div>
+                <button class="btn btn-secondary" type="button" id="signOutButton">Sign out</button>
+            </div>
+
+            <p class="admin-status" id="dashboardStatus" role="status" aria-live="polite"></p>
+
+            <div class="stats-grid" aria-label="Message counts">
+                <article class="stat-card"><h2>Total messages</h2><p id="totalCount">—</p></article>
+                <article class="stat-card"><h2>New</h2><p id="newCount">—</p></article>
+                <article class="stat-card"><h2>Read</h2><p id="readCount">—</p></article>
+                <article class="stat-card"><h2>Archived</h2><p id="archivedCount">—</p></article>
+            </div>
+
+            <div class="inbox-toolbar">
+                <label class="sr-only" for="messageSearch">Search messages</label>
+                <input id="messageSearch" type="search" maxlength="80" placeholder="Search name, email or subject">
+                <label class="sr-only" for="statusFilter">Filter messages by status</label>
+                <select id="statusFilter">
+                    <option value="all">All statuses</option>
+                    <option value="new">New</option>
+                    <option value="read">Read</option>
+                    <option value="replied">Replied</option>
+                    <option value="archived">Archived</option>
+                </select>
+            </div>
+
+            <div class="inbox-layout">
+                <section class="message-list-panel admin-panel" aria-label="Messages">
+                    <h2 class="sr-only">Messages</h2>
+                    <div class="message-list" id="messageList" aria-live="polite"></div>
+                    <p class="admin-status" id="listStatus"></p>
+                </section>
+
+                <section class="message-detail admin-panel" id="messageDetail" aria-label="Selected message" aria-live="polite">
+                    <p class="empty-detail">Choose a message to read its full contents.</p>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script src="../supabase-config.js"></script>
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
